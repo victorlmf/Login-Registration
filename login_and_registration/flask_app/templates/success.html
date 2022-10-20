@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+    <title>Success</title>
+</head>
+<body>
+    <div class="container col-6">
+        <h1 class="text-center bg-warning p-2">Welcome {{user.first_name}}</h1>
+        <div class="card">
+            <div class="card-body">
+                <p><b>Full Name:</b> {{user.first_name}} {{user.last_name}}</p>
+                <p><b>Email:</b> {{user.email}}</p>
+                <p><b>Birthday:</b> {{user.dob}}</p>
+                <p><b>Favorite Programing Language:</b> {{user.fav_language}}</p>
+                {% if session.hobbies %}
+                    <p><b>Favorite Hobbies:</b> 
+                        {% for hobby in session.hobbies %}
+                            {{hobby}}
+                        {% endfor %}
+                    </p>
+                {% endif %}
+            </div>
+        </div>
+        <a href="/logout" class="btn btn-warning mt-2">Log Out</a>
+    </div>
+</body>
+</html>

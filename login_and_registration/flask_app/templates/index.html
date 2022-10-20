@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+    <title>Home Page</title>
+</head>
+<body>
+    <div class="container d-flex col-8 justify-content-between">
+        <!-- Registration -->
+        <div class="container me-5">
+            <h1 class="text-center bg-info p-2 ">Register</h1>
+            <form action="/register_user" method="post">
+            <!-- <input type="hidden" name="id" value="id"> -->
+                {% with messages = get_flashed_messages(category_filter=['register']) %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p style="color: red;">{{message}}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <!-- First Name -->
+                <div class="form-group mb-3">
+                    <label for="first_name" class="form-label">First Name:</label>
+                    <input type="text" name="first_name" class="form-control">
+                </div>
+                <!-- Last Name -->
+                <div class="form-group mb-3">
+                    <label for="last_name" class="form-label">Last Name:</label>
+                    <input type="text" name="last_name" class="form-control">
+                </div>
+                <!-- Email -->
+                <div class="form-group mb-3">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" name="email" class="form-control">
+                </div>
+                <!-- DOB -->
+                <div class="mb-3">
+                    <label for="dob" class="form-label">Birthday:</label>
+                    <input type="date" name="dob" class="form-control">
+                </div>
+                <!-- Password -->
+                <div class="form-group mb-3">
+                    <label for="password" class="form-label">Password:</label>
+                    <input type="password" name="password" class="form-control">
+                </div>
+                <div class="form-group mb-3">
+                    <label for="confirm_pw" class="form-label">Confirm Password:</label>
+                    <input type="password" name="confirm_pw" class="form-control">
+                </div>
+                <!-- Favorite Programming Language -->
+                <div class="d-flex justify-content-between">
+                    <p>Favorite Programming Language:</p>
+                    <div class="form-check mb-3">
+                        <input type="radio" class="form-check-input" name="fav_language" value="JavaScript" >
+                        <label for="fav_language" class="form-check-label">JavaScript</label>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input type="radio" class="form-check-input" name="fav_language" value="Python" >
+                        <label for="fav_language" class="form-check-label">Python</label>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input type="radio" class="form-check-input" name="fav_language" value="C++" >
+                        <label for="fav_language" class="form-check-label">C++</label>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input type="radio" class="form-check-input" name="fav_language" value="Java" >
+                        <label for="fav_language" class="form-check-label">Java</label>
+                    </div>
+                </div>
+                <input type="submit" class="btn btn-info" value="Register">
+            </form>
+        </div>
+        <!-- Login -->
+        <div class="container ms-5">
+            <h1 class="text-center bg-warning p-2">Login</h1>
+            <form action="/login_user" method="post">
+                {% with messages = get_flashed_messages(category_filter=['login']) %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p style="color: red;">{{message}}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <div class="form-group mb-3">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="text" name="email" class="form-control">
+                </div>
+                <div class="form-group mb-3">
+                    <label for="password" class="form-label">Password:</label>
+                    <input type="password" name="password" class="form-control">
+                </div>
+                <!-- Hobbies -->
+                <div class="d-flex justify-content-between">
+                    <p>Favorite Hobbies:</p>
+                    <div class="form-check mb-3">
+                        <input type="checkbox" class="form-check-input" name="hobby" value="Sport">
+                        <label for="hobby" class="form-check-label">Sport</label>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input type="checkbox" class="form-check-input" name="hobby" value="Music">
+                        <label for="hobby" class="form-check-label">Music</label>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input type="checkbox" class="form-check-input" name="hobby" value="Movie">
+                        <label for="hobby" class="form-check-label">Movie</label>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input type="checkbox" class="form-check-input" name="hobby" value="Shopping">
+                        <label for="hobby" class="form-check-label">Shopping</label>
+                    </div>
+                </div>
+                <input type="submit" class="btn btn-warning" value="Login">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
